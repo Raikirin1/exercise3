@@ -1,0 +1,133 @@
+<html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+         <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="js3.js"></script>
+    </head>
+    <style>
+        form{
+            border: 10px;
+            background-color:black;
+            color: black;
+        }
+        table{
+            background-color: black;
+        }
+        body{
+            background-color: black;
+        }
+        tbody{
+            text-align: center;
+        }
+    </style>
+    <body>
+      
+      <div class="container">
+        <div class="row">
+          <form id="searchbar" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="search" type="text" class="form-control " onkeyup="myFunction()" style="color:yellow">
+                <label for="search" style="color:yellow">Search</label>
+                <span style="color:yellow" class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    
+      <table id="myTable" style="color:yellow"  class="t-style bordered highlight centered responsive-table table table-borderless table-dark" style="width: 1300px; margin: 0 auto;">
+        <thead id="t-head">
+          <tr>
+                <th scope="col">Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Height</th>
+            <th scope="col">Mass</th>
+            <th scope="col">Hair Color</th>
+            <th scope="col">Skin Color</th>
+            <th scope="col">Eye Color</th>
+            <th scope="col">Birth Year</th>
+            <th scope="col">Gender</th>
+          </tr>
+        </thead>
+        <tbody id="target">
+       </tbody>
+      </table>
+
+
+
+ 
+
+      <script>
+            var data = peopleobj.results;
+    
+            for(var i = 0 ; i < data.length; i++) {
+              console.log(data[i].gender);var tr = document.createElement("tr");
+              var thno = document.createElement("th");
+              var td1 = document.createElement("td");
+              var td2 = document.createElement("td");
+              var td3 = document.createElement("td");
+              var td4 = document.createElement("td");
+              var td5 = document.createElement("td");
+              var td6 = document.createElement("td");
+              var td7 = document.createElement("td");
+              var td8 = document.createElement("td");
+              thno.append(i+1);
+              thno.setAttribute("scope", "row");
+              td1.append(data[i].name);
+              td2.append(data[i].height);
+              td3.append(data[i].mass);
+              td4.append(data[i].hair_color);
+              td5.append(data[i].skin_color);
+              td6.append(data[i].eye_color);
+              td7.append(data[i].birth_year);
+              td8.append(data[i].gender);
+              tr.append(thno);
+              tr.append(td1);
+              tr.append(td2);
+              tr.append(td3);
+              tr.append(td4);
+              tr.append(td5);
+              tr.append(td6);
+              tr.append(td7);
+              tr.append(td8);
+              document.querySelector("#target").appendChild(tr);
+            }
+            
+        
+
+      <!-- Script Search -->
+     
+      function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+}
+      }
+      </script>
+
+    
+  </body></html>
